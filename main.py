@@ -7,7 +7,7 @@ pygame.init()
 # Параметры экрана
 WIDTH, HEIGHT = 800, 600
 FOV = math.pi / 3  # Поле зрения (60 градусов)
-NUM_RAYS = 200  # Увеличил количество лучей (больше = сглаженные стены)
+NUM_RAYS = 200  # Количество лучей (больше = сглаженные стены)
 MAX_DEPTH = 800
 DELTA_ANGLE = FOV / NUM_RAYS
 SCALE = WIDTH // NUM_RAYS
@@ -21,7 +21,7 @@ GREEN = (0, 255, 0)
 
 # Создание окна
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("3D Raycasting Maze")
+pygame.display.set_caption("3D")
 clock = pygame.time.Clock()
 
 # Карта лабиринта
@@ -45,7 +45,7 @@ player_angle = 0
 player_speed = 3
 
 def cast_ray(x, y, angle):
-    """Кастует один луч и находит точку пересечения со стеной, устраняя эффект лесенки."""
+    """Кастует один луч и находит точку пересечения со стеной"""
     sin_a = math.sin(angle)
     cos_a = math.cos(angle)
 
@@ -88,7 +88,7 @@ def cast_ray(x, y, angle):
     return min(depth_vert, depth_hor)
 
 def cast_rays():
-    """Рендеринг 3D сцены с устранением эффекта лесенки."""
+    """Рендеринг 3D сцены"""
     x, y = player_pos
     angle = player_angle - FOV / 2
 
@@ -106,7 +106,7 @@ def check_collision(new_x, new_y):
     return MAP[row][col] == "#"
 
 def move_player():
-    """Обновление позиции игрока с учетом столкновений."""
+    """Обновление позиции игрока"""
     global player_pos, player_angle
     x, y = player_pos
     sin_a = math.sin(player_angle)
